@@ -13,7 +13,7 @@ Before you begin please note
 This project is structured in two main directories
 
 #### Backend (C# .NET Core API)
-- **Location** `vending-machine-api`
+- **Location** `backend`
 - **Structure**
   - `CsvVendingMachine`: 
   - `VendingMachineController`: API Controller to handle HTTP requests and to interface with the underlying  `CsvVendingMachine.cs` file.

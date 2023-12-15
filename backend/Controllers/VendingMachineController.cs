@@ -52,6 +52,7 @@ namespace vending_machine
 
         // Finally, record transaction in "ledger"
         _repository.RecordTransaction(transaction);
+        _repository.GetInventory();
 
         return Ok(new { Message = "Purchase successful", Transaction = transaction });
       }

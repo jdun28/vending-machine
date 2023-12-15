@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
-using System.Linq;
+using Microsoft.AspNetCore.CookiePolicy;
 
 namespace vending_machine
 {
@@ -33,7 +30,7 @@ namespace vending_machine
       if (product != null && product.Quantity > 0)
       {
         product.Quantity--;
-        WriteInventoryCsvFile(new List<Product> { product }); // Pass a list with a single product
+        UpdateProductInCsvFile(product); // Pass a list with a single product
       }
     }
 
@@ -131,6 +128,23 @@ namespace vending_machine
       }
     }
 
+    private void UpdateProductInCsvFile(Product product)
+    {
+      var lines = File.ReadAllLines(InventoryCsvFilePath).ToList();
+
+      for (int i = 0; i < lines.Count; i++)
+      {
+        var lineValues = lines[i].Split(',');
+        if (lineValues.Length > 0 && lineValues[0] == product.Name)
+        {
+          lineValues[2] = product.Quantity.ToString();
+          lines[i] = string.Join(",", lineValues);
+          break;
+        }
+      }
+      File.WriteAllLines(InventoryCsvFilePath, lines);
+    }
+
     private List<Transaction> ReadLedgerCsvFile()
     {
       var ledger = new List<Transaction>();
@@ -156,7 +170,7 @@ namespace vending_machine
 
     private void WriteLedgerCsvFile(List<Transaction> ledger)
     {
-      using (var writer = new StreamWriter(LedgerCsvFilePath))
+      using (var writer = new StreamWriter(LedgerCsvFilePath, append: true))
       {
         foreach (var transaction in ledger)
         {
