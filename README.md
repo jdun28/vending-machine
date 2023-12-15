@@ -15,10 +15,15 @@ This project is structured in two main directories
 #### Backend (C# .NET Core API)
 - **Location** `backend`
 - **Structure**
-  - `CsvVendingMachine`: 
-  - `VendingMachineController`: API Controller to handle HTTP requests and to interface with the underlying  `CsvVendingMachine.cs` file.
-  - `Product` & `Transaction`: the models for the data we will be using in this project.
-  - `IVendingMachine`: The interface to use all methods within `CsvVendingMachine`.
+  - Services:
+    -`CsvVendingMachine`
+    - `IVendingMachine`: The interface to use all methods within `CsvVendingMachine`.
+  - Controllers:
+    - `VendingMachineController`: API Controller to handle HTTP requests and to interface with the underlying  `CsvVendingMachine.cs` file.
+  - Models: 
+    - `Product`
+    - `Transaction`
+  
 - **Main Technologies**: .NET 8, ASP.NET Core
 
 
