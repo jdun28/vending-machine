@@ -1,6 +1,6 @@
 ## Vending Machine ##
 
-Welcome to the vending machine fullstack homework submission for Jen Dunlap.
+Welcome to my vending machine project.
 
 This solution has the `vending-machine-api` written in C# with a `vending-machine-ui` created using React.
 
