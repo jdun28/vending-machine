@@ -16,7 +16,7 @@ This project is structured in two main directories
 - **Location** `backend`
 - **Structure**
   - Services:
-    -`CsvVendingMachine`
+    - `CsvVendingMachine`
     - `IVendingMachine`: The interface to use all methods within `CsvVendingMachine`.
   - Controllers:
     - `VendingMachineController`: API Controller to handle HTTP requests and to interface with the underlying  `CsvVendingMachine.cs` file.
